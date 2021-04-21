@@ -6,5 +6,5 @@ COPY ./index.html /usr/share/nginx/html
 # Make port 80 available to the world outside the container
 EXPOSE 80
 
-# Run the nginx server
+# Run the nginx serverdocker 
 CMD ["nginx", "-g", "daemon off;"]
