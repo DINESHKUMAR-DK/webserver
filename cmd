@@ -5,15 +5,15 @@ kubectl create secret docker-registry harbor-secrete --docker-server=10.0.8.158 
 apiVersion: v1
 kind: Pod
 metadata:
-  name: ngnix-image
+  name: webserver
 spec:
   containers:
     - name: ngnix
-      image: phx.ocir.io/ansh81vru1zp/project01/ngnix-lb:latest
+      image: 10.0.8.158/k8/web-server
       imagePullPolicy: Always
       ports:
       - name: nginx
         containerPort: 8080
         protocol: TCP
   imagePullSecrets:
-    - name: ocirsecret
+    - name: harbor-secrete
