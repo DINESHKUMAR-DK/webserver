@@ -22,3 +22,17 @@ spec:
           name : nginx
       imagePullSecrets:
         - name: harbor-secrete
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+  - port: 8080
+    targetPort: 80
