@@ -39,7 +39,7 @@ spec:
 
 
 
-
+https://docs.openshift.com/container-platform/4.6/installing/installing_vsphere/installing-vsphere.html#csr_management_installing-vsphere
 
 
 kubectl create secret docker-registry harbor-secrete --docker-server=10.0.8.158 --docker-username='admin' --docker-password='Harbor12345'
