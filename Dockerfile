@@ -1,4 +1,5 @@
-FROM nginx:1.12-alpine
+FROM nginx:new
+#FROM nginx:1.12-alpine
 
 # Copy the tagged files from the build to the production environmnet of the nginx server
 COPY ./index.html /usr/share/nginx/html
