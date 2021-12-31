@@ -1,0 +1,43 @@
+pipeline {
+    environment {
+        dockerimagename= "dinesh8282/wserver"
+        dockerImage = ""
+    }
+    agent any
+    
+    stages {
+        
+        stage('Checkout Source ') {
+            steps {
+                git branch: 'k8s', url: 'https://github.com/DINESHKUMAR-DK/webserver.git'
+            }
+        }
+        stage('Build image') {
+            steps{
+                script {
+                    dockerImage = docker.build dockerimagename
+                }
+            }
+        }
+        stage('Pushing Image'){
+            environment{
+                regsitryCredential = 'dockerhub'
+            }
+            steps{
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com',regsitryCredential) {
+                        dockerImage.push("latest")
+                    }
+                }
+            }
+        }
+        stage('Deploying App to Kubernetes') {
+            steps {
+                script {
+                    kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubernetes")
+                }
+            }
+        }
+        
+    }
+}
