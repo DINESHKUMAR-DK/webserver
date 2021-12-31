@@ -1,0 +1,39 @@
+  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wapp-deployment
+  labels:
+    app: wapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wapp
+  template:
+    metadata:
+      labels:
+        app: wapp 
+    spec:
+      containers:
+      - name: wserver
+        image: dinesh8282/wserver:latest
+        ports:
+        - containerPort: 80
+        
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: wserver-service
+spec:
+  selector:
+    app: wapp 
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 31110
