@@ -26,13 +26,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: wserver-service
+  name: wapp-service
 spec:
-  selector:
-    app: wapp 
   type: NodePort
+  selector:
+    app: wapp
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 31110
+    nodePort: 30700
