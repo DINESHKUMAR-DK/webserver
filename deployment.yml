@@ -28,7 +28,7 @@ kind: Service
 metadata:
   name: wapp-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: wapp
   ports:
