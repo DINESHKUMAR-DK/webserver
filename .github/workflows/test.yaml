@@ -5,11 +5,11 @@ name: test
             - main
     workflow_dispatch: {}
 env:
-    ACR_RESOURCE_GROUP: tes_group
-    AZURE_CONTAINER_REGISTRY: acrworkflow1668487113357
+    ACR_RESOURCE_GROUP: Dinesh-rg
+    AZURE_CONTAINER_REGISTRY: alphaacrtest
     CLUSTER_NAME: test
-    CLUSTER_RESOURCE_GROUP: tes_group
-    CONTAINER_NAME: image-workflow-1668487113357
+    CLUSTER_RESOURCE_GROUP: Dinesh-rg
+    CONTAINER_NAME: image-workflow-1674895545941
     DEPLOYMENT_MANIFEST_PATH: |
         ./deployment.yml
 jobs:
@@ -55,4 +55,4 @@ jobs:
                 action: deploy
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-                namespace: default
+                namespace: namespace-workflow-1674895545941
